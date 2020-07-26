@@ -1,14 +1,18 @@
 #include <tgbot/tgbot.h>
 
+<<<<<<< HEAD
 void showMessageAndInfo(TgBot::Message::Ptr);
 void showMessage(TgBot::Message::Ptr);
 bool isPhoto(TgBot::Message::Ptr);
 
+=======
+>>>>>>> master
 int main() {
     TgBot::Bot bot("TOKEN");
     bot.getEvents().onCommand("start", [&bot](TgBot::Message::Ptr message) {
         bot.getApi().sendMessage(message->chat->id, "Hi!\nI'm echo-bot written on C++\nAnd soon the Creator will kill me");
     });
+<<<<<<< HEAD
 
     bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
         if (StringTools::startsWith(message->text, "/start")) {
@@ -23,6 +27,14 @@ int main() {
         }
         showMessageAndInfo(message);
 
+=======
+    bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
+        std::cout << "User wrote: " << message->text.c_str() << std::endl;
+
+        if (StringTools::startsWith(message->text, "/start")) {
+            return;
+        }
+>>>>>>> master
         bot.getApi().sendMessage(message->chat->id, "Your message is: " + message->text);
     });
     try {
@@ -36,6 +48,7 @@ int main() {
         std::cout << "Error: " << e.what();
     }
     return 0;
+<<<<<<< HEAD
 }
 
 void showMessageAndInfo(TgBot::Message::Ptr message){
@@ -56,3 +69,6 @@ void showMessage(TgBot::Message::Ptr message){
 bool isPhoto(TgBot::Message::Ptr message) {
     return message->photo.size()!=0;
 }
+=======
+}
+>>>>>>> master
