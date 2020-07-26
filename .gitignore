@@ -3,6 +3,8 @@ cmake-build-debug/*
 cmake-build-release/*
 .idea/*
 
+TOKEN.txt
+
 # Prerequisites
 *.d
 
