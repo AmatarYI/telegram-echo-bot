@@ -23,6 +23,12 @@ int main() {
         }
         showMessageAndInfo(message);
 
+    bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
+        std::cout << "User wrote: " << message->text.c_str() << std::endl;
+
+        if (StringTools::startsWith(message->text, "/start")) {
+            return;
+        }
         bot.getApi().sendMessage(message->chat->id, "Your message is: " + message->text);
     });
     try {
@@ -55,4 +61,5 @@ void showMessage(TgBot::Message::Ptr message){
 
 bool isPhoto(TgBot::Message::Ptr message) {
     return message->photo.size()!=0;
+}
 }
